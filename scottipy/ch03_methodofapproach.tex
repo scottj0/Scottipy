@@ -1,0 +1,191 @@
+%
+% $Id: ch03_thework.tex
+%
+%   *******************************************************************
+%   * SEE THE MAIN FILE "AllegThesis.tex" FOR MORE INFORMATION.       *
+%   *******************************************************************
+%
+\chapter{Method of Approach} \label{ch:method}
+This chapter outlines how the process of building the project will work. It also
+shows how the Spotify API works, and includes an outline of Spotipy and Flask.
+
+\section{User Inputs}
+
+The existing Spotify API allows for searching for tracks, albums, artists, and playlists, which
+makes it easy for the user to enter a song name and quickly find it. For example, here is a query
+for the term "dark fantasy":
+\\
+
+\lstset{language=Java}
+\begin{lstlisting}
+curl -X "GET" "https://api.spotify.com/v1/search?q=dark%20fantasy&type=track" -H "Accept: application/json"
+-H "Content-Type: application/json"
+\end{lstlisting}
+
+The result is the Spotify link to the track, as well as information about the popularity,
+and listing on its album.\\
+
+\begin{lstlisting}
+"href": "https://api.spotify.com/v1/tracks/7yNK27ZTpHew0c55VvIJgm",
+        "id": "7yNK27ZTpHew0c55VvIJgm",
+        "is_local": false,
+        "name": "Dark Fantasy",
+        "popularity": 66,
+        "preview_url": null,
+        "track_number": 1,
+        "type": "track",
+        "uri": "spotify:track:7yNK27ZTpHew0c55VvIJgm"
+\end{lstlisting}
+
+From the previous step, information about the song can be found by searching for its audio features:
+\\
+\begin{lstlisting}
+curl -X "GET" "https://api.spotify.com/v1/audio-features/7yNK27ZTpHew0c55VvIJgm"
+-H "Accept: application/json" -H "Content-Type: application/json"
+\end{lstlisting}
+
+
+This query results in an easy to use list of characteristics and their matching values:
+\\
+
+\begin{lstlisting}
+{
+  "danceability": 0.59,
+  "energy": 0.587,
+  "key": 5,
+  "loudness": -5.919,
+  "mode": 1,
+  "speechiness": 0.0457,
+  "acousticness": 0.274,
+  "instrumentalness": 0,
+  "liveness": 0.167,
+  "valence": 0.367,
+  "tempo": 88.015,
+  "type": "audio_features",
+  "id": "7yNK27ZTpHew0c55VvIJgm",
+  "uri": "spotify:track:7yNK27ZTpHew0c55VvIJgm",
+  "track_href": "https://api.spotify.com/v1/tracks/7yNK27ZTpHew0c55VvIJgm",
+  "analysis_url": "https://api.spotify.com/v1/audio-analysis/7yNK27ZTpHew0c55VvIJgm",
+  "duration_ms": 280787,
+  "time_signature": 4
+}
+\end{lstlisting}
+
+Each of the listed features can be compared to the rest of the Spotify library
+to find similar tracks. In addition to tracks, keywords such as moods or events
+would also be accepted as inputs. Instead of searching for tracks in that case, the
+Spotify API allows us to find popular playlists with the keywords in the title.
+In this example, the term "sleep" is queried, with no other context:
+//
+
+\begin{lstlisting}
+curl -X "GET" "https://api.spotify.com/v1/search?q=sleep&type=playlist" -H "Accept:
+application/json" -H "Content-Type: application/json"
+\end{lstlisting}
+
+This search finds the playlist called "Sleep", curated by Spotify, as the first result:
+\\
+\begin{lstlisting}
+{
+  "playlists": {
+    "href": "https://api.spotify.com/v1/search?query=sleep&type=playlist&market=US&offset=0&limit=20",
+    "items": [
+      {
+        "collaborative": false,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/playlist/37i9dQZF1DWZd79rJ6a7lp"
+        },
+        "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DWZd79rJ6a7lp",
+        "id": "37i9dQZF1DWZd79rJ6a7lp",
+        "images": [
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/f499b0497289a6432dcccfb6de5f57164739d525",
+            "width": 300
+          }
+        ],
+        "name": "Sleep",
+        "owner": {
+          "display_name": "Spotify",
+          "external_urls": {
+            "spotify": "https://open.spotify.com/user/spotify"
+          },
+          "href": "https://api.spotify.com/v1/users/spotify",
+          "id": "spotify",
+          "type": "user",
+          "uri": "spotify:user:spotify"
+        },
+        "primary_color": null,
+        "public": null,
+        "snapshot_id": "MTU0MDkxNDI1OCwwMDAwMDBhNDAwMDAw
+                    MTY2YzExYTAyNTcwMDAwMDE2MmYyYjBlOGQ4",
+        "tracks": {
+          "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DWZd79rJ6a7lp/tracks",
+          "total": 152
+        },
+        "type": "playlist",
+        "uri": "spotify:user:spotify:playlist:37i9dQZF1DWZd79rJ6a7lp"
+      },
+\end{lstlisting}
+
+Popular tracks from those would be added to the playlist created by this application.
+Thus, the basis of the model can find related tracks from a user entering either a
+song name, or even just an emotion that they would like to relate music to.
+
+\section{Spotipy}
+
+Spotipy is a \textit{Python} wrapper for the Spotify API, developed by The Echo Nest
+team \cite{Lamere:17}. Spotipy gives full access to the data available from the
+Spotify platform. Spotify's native resource identifiers, URL links, and IDs for
+artists, tracks, playlists, and albums are all supported. Spotipy allows users to
+quickly gather information such as recently played songs, saved tracks, playlists,
+and albums, top played artists and songs, and even currently playing tracks.
+There are also methods for featured playlists across Spotify, new releases, and
+even recommendations from seed artists, genres, or tracks.
+
+The track end points are listed below, with their types, value ranges, and descriptions.
+\begin{itemize}
+  \item Acousticness - float - 0.0 to 1.0 - Lack of electric sounds/instruments
+  \item Danceability - float - 0.0 to 1.0 - Combination of tempo, rhythm stability,
+  and beat strength
+  \item Energy - float - 0.0 to 1.0 - Intensity, dynamic range, loudness, timbre, entropy
+  \item Instrumentalness - float - 0.0 to 1.0 - Lack of vocals
+  \item Liveness - float - 0.0 to 1.0 - If a track was performed live
+  \item Loudness - float - -60 to 0 - Overall volume
+  \item Speechiness - float - 0.0 to 1.0 - Presence of spoken words
+  \item Tempo - float - 0 to 320 - Beats per minute of a track
+  \item Valence - float - 0.0 to 1.0 - Musical positiveness of a track
+\end{itemize}
+
+Spotipy was chosen for this project simply for ease of use, and my own familiarity
+with \textit{Python}, instead of using \textit{JavaScript}. This also allowed
+coding to be quickly checked in the terminal, which in the testing process
+was easier for me than using \textit{JavaScript}. From the beginning of the
+research project to the present, I have not seen any advantage in using the native
+API instead of Spotipy. From accessing the database, to general ease of use, Spotipy
+had no visible limitations.
+
+\section{Flask}
+The flipside of coding in \textit{Python} rather than \textit{JavaScript}, was
+the increased difficulty in creating a web app. Luckily, the Flask framework covered every need
+of this project. Flask's emphasis on being a "micro framework" means that
+\begin{quote}
+By default, Flask does not include a database abstraction layer, form validation
+or anything else where different libraries already exist that can handle that.
+Instead, Flask supports extensions to add such functionality to your application
+as if it was implemented in Flask itself. Numerous extensions provide database
+integration, form validation, upload handling, various open authentication
+technologies, and more \cite{Pallets:18}.
+\end{quote}
+
+Since the project does not currently require any advanced or complicated techniques,
+a simpler framework like Flask can easily and smoothly handle the requirements.
+In addition to these benefits, Flask has a strong online presence, and extensive
+documentation. This became even more useful than I first realized, as it helped
+me to create the HTML templates with more guidance than many other, perhaps more
+robust, frameworks. The command line interface also included above average debugging,
+which became quite useful in the learning process, even when my issues were in the
+HTML templates, rather than the \textit{Python} source code. As this program grows
+in the future, I will surely explore using other frameworks, if Flask becomes
+limiting in features or speed. Django has become a likely choice, as I had the
+opportunity to work with it in class this semester.

@@ -1,0 +1,153 @@
+\begin{thebibliography}{10}
+
+\bibitem{Aleksik:18}
+Stefan Aleksik.
+\newblock musicscape, 2018.
+\newblock \url{https://github.com/StefanAleksik/musicScape}.
+
+\bibitem{Midia:18}
+Music~Industry Blog.
+\newblock Mid-year 2018 streaming market shares.
+\newblock
+  \url{https://musicindustryblog.wordpress.com/2018/09/13/mid-year-2018-streaming-market-shares/}.
+
+\bibitem{DeBock:17}
+Bart~De Bock.
+\newblock Klarafy, 2017.
+\newblock
+  \url{http://klarafy.klara.be/en/?utm_source=spotify.developer.showcase&utm_medium=referral}.
+
+\bibitem{Ciocca:17}
+Sophia Ciocca.
+\newblock How does spotify know you so well?, 2017.
+\newblock
+  \url{https://medium.com/s/story/spotifys-discover-weekly-how-machine-learning-finds-your-new-music-19a41ab76efe}.
+
+\bibitem{Constine:15}
+Josh Constine.
+\newblock Inside the spotify-echo nest skunkworks, 2015.
+\newblock \url{https://techcrunch.com/2014/10/19/the-sonic-mad-scientists/}.
+
+\bibitem{Downie:03}
+J.~Stephen Downie.
+\newblock Music information retrieval.
+\newblock {\em Annual Review of Information Science and Technology 37:
+  295-340}, 2003.
+
+\bibitem{Klara:17}
+FAMOUS.
+\newblock Klarafy documentation, 2017.
+\newblock \url{http://klarafy.klara.be/en/about/}.
+
+\bibitem{Spotify:19}
+Spotify for Developers.
+\newblock Developer showcase, 2019.
+\newblock \url{https://developer.spotify.com/community/showcase/}.
+
+\bibitem{Hammer:18}
+Zach Hammer.
+\newblock Playlist souffle, 2018.
+\newblock \url{https://playlistsouffle.com/playlists}.
+
+\bibitem{Heath:15}
+Alex Heath.
+\newblock Spotify is getting unbelievably good at picking music — here’s an
+  inside look at how, 2015.
+\newblock
+  \url{https://www.businessinsider.com/inside-spotify-and-the-future-of-music-streaming}.
+
+\bibitem{Hettinger:04}
+Raymond Hettinger.
+\newblock Random samples without replacement (python recipe), 2004.
+\newblock
+  \url{http://code.activestate.com/recipes/272884-random-samples-without-replacement/}.
+
+\bibitem{Spotify:15}
+Chris Johnson.
+\newblock From idea to execution: Spotify's discover weekly, 2015.
+\newblock
+  \url{https://www.slideshare.net/MrChrisJohnson/from-idea-to-execution-spotifys-discover-weekly/31-1_0_0_0_1}.
+
+\bibitem{Lamere:17}
+Paul Lamere.
+\newblock Spotipy documentation, 2017.
+\newblock \url{https://spotipy.readthedocs.io/en/latest/}.
+
+\bibitem{Magic:15}
+Joel Lovera.
+\newblock Magicplaylist, 2015.
+\newblock \url{https://magicplaylist.co/#/?_k=x76vtc}.
+
+\bibitem{Lovera:15}
+Joel Lovera.
+\newblock Magicplaylist documentation/source code, 2015.
+\newblock \url{https://github.com/loverajoel/magicplaylist}.
+
+\bibitem{Matplotlib:19}
+Matplotlib.
+\newblock User's guide, 2019.
+\newblock \url{https://matplotlib.org/users/index.html}.
+
+\bibitem{echo:18}
+The~Echo Nest.
+\newblock The echo nest.
+\newblock \url{theechonest.com}.
+
+\bibitem{echo:14}
+The~Echo Nest.
+\newblock The echo nest joins spotify.
+\newblock
+  \url{http://blog.echonest.com/post/78749300941/the-echo-nest-joins-spotify}.
+
+\bibitem{Pasick:15}
+Adam Pasick.
+\newblock The magic that makes spotify's discover weekly playlists so damn
+  good.
+\newblock 2015.
+\newblock \url{https://qz.com/571007/}.
+
+\bibitem{Dev:18}
+Spotify.
+\newblock Audio features and analysis, 2018.
+\newblock \url{https://developer.spotify.com/discover/}.
+
+\bibitem{Newsroom:18}
+Spotify.
+\newblock Spotify company info, 2018.
+\newblock \url{https://newsroom.spotify.com/company-info/}.
+
+\bibitem{SDK:18}
+Spotify.
+\newblock Web playback sdk, 2018.
+\newblock \url{https://developer.spotify.com/documentation/web-playback-sdk/}.
+
+\bibitem{TopHits:19}
+Spotify.
+\newblock Today's top hits, 2019.
+\newblock
+  \url{https://open.spotify.com/user/spotify/playlist/37i9dQZF1DXcBWIGoYBM5M?si=6oaz5a0SRzu6II1LltFrEA}.
+
+\bibitem{Pallets:18}
+Pallets Team.
+\newblock Flask documentation, 2018.
+\newblock \url{http://flask.pocoo.org/docs/1.0/}.
+
+\bibitem{Pandas:19}
+PyData~Development Team.
+\newblock Pandas documentation, 2019.
+\newblock
+  \url{https://pandas.pydata.org/pandas-docs/stable/getting_started/overview.html}.
+
+\bibitem{2018arXiv181001520Z}
+H.~{Zamani}, M.~{Schedl}, P.~{Lamere}, and C.-W. {Chen}.
+\newblock {An Analysis of Approaches Taken in the ACM RecSys Challenge 2018 for
+  Automatic Music Playlist Continuation}.
+\newblock {\em ArXiv e-prints}, October 2018.
+
+\bibitem{6566767}
+B.~{Zhang}, G.~{Kreitz}, M.~{Isaksson}, J.~{Ubillos}, G.~{Urdaneta}, J.~A.
+  {Pouwelse}, and D.~{Epema}.
+\newblock Understanding user behavior in spotify.
+\newblock In {\em 2013 Proceedings IEEE INFOCOM}, pages 220--224, April 2013.
+
+\end{thebibliography}
